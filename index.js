@@ -13,9 +13,10 @@ var ejsMate = require('ejs-mate');
 //database connection
 var connect = 'mongodb://'+ connection.username +':'+connection.password+ '@ds028310.mlab.com:28310/application';
 mongoose.connect(connect,function(err){
-  if(err) console.log("Error connecting to database");
-  else console.log("Successfully connected to database");
-})
+    if(err) console.log("Error connecting to database")
+    else console.log("Successfully connected to database")
+  }
+)
 
 // Middleware setup
 app.use(morgan('dev'));
@@ -29,7 +30,7 @@ app.post('/create-user',function(req,res,next){
   var user = new User();
   user.profile.name = req.body.name;
   user.password = req.body.password;
-  user.email = req.body.email;
+  user.email = req.body.email; 
   user.save(function(err){
     if(err) res.json("error while creating a new user");
     else res.json("successfully created a new user bro");
